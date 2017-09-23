@@ -6,6 +6,7 @@ export class Task {
   start_date: string;
   is_completed: boolean;
   is_archived: boolean;
+  is_high_priority: boolean;
   estimated_effort: number;
   actual_effort: number;
   physical_progress: number;
