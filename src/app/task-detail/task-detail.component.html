@@ -1,3 +1,17 @@
-<p>
-  task-detail works!
-</p>
+<div *ngIf="task" class="task">
+  <div>id: {{task.id}}</div>
+  <div>name: {{task.name}}</div>
+  <div>creation_date: {{task.creation_date | date:'medium'}}</div>
+  <div>due_date: {{task.due_date | date:'medium'}}</div>
+  <div>start_date: {{task.start_date | date:'medium'}}</div>
+  <div>is_completed: {{task.is_completed}}</div>
+  <div>is_archived: {{task.is_archived}}</div>
+  <div>is_high_priority: {{task.is_high_priority}}</div>
+  <div>estimated_effort: {{task.estimated_effort}}</div>
+  <div>actual_effort: {{task.actual_effort}}</div>
+  <div>physical_progress: {{task.physical_progress}}</div>
+  <div>obj_status: {{task.obj_status}}</div>
+  <div>description: {{task.description}}</div>
+  <div>project_id: {{task.project_id}}</div>
+  <div>tags: {{task.tags}}</div>
+</div>
