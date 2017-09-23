@@ -1,3 +1,40 @@
+table {
+  border-spacing: 0;
+}
+
+thead tr {
+  background-color: #bbb;
+}
+
+tbody {
+  tr {
+    background-color: #eee;
+
+    &:hover {
+      background-color: #b9ebff;
+    }
+  }
+
+  td {
+    border-top: 1px solid #bbb;
+    cursor: pointer;
+  }
+}
+
+th,
+td {
+  padding: 5px 10px;
+}
+
 .prioritized {
   font-weight: 700;
+}
+
+.centered {
+  text-align: center;
+}
+
+.summary {
+  margin: 20px;
+  font-size: 90%;
 }

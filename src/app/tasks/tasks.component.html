@@ -1,5 +1,27 @@
-<ol><li *ngFor="let task of tasks" [routerLink]="['/task', task.id]" class="row" [class.prioritized]="task.is_high_priority">
-  {{task.name}} | {{task.tags}} | {{task.actual_effort}} | {{task.estimated_effort}} | {{task.due_date | date:'medium'}}
-</li></ol>
+<table *ngIf="tasks">
+  <thead>
+    <tr>
+      <th rowspan="2">Name</th>
+      <th rowspan="2">Tags</th>
+      <th colspan="2">Effort</th>
+      <th rowspan="2">Due date</th>
+    </tr>
+
+    <tr>
+      <th>Actual</th>
+      <th>Esimated</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <tr *ngFor="let task of tasks" [routerLink]="['/task', task.id]" [class.prioritized]="task.is_high_priority">
+      <td>{{task.name}}</td>
+      <td><div *ngFor="let tag of task.tags" class="tag">{{tag}}</div></td>
+      <td class="centered">{{task.actual_effort}}</td>
+      <td class="centered">{{task.estimated_effort}}</td>
+      <td>{{task.due_date | date:'medium'}}</td>
+    </tr>
+  </tbody>
+</table>
 
 <div *ngIf="activeTasks && totalTasks" class="summary">Show {{activeTasks}} active tasks from {{totalTasks}} total</div>
