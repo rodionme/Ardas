@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
+import { FormsModule } from '@angular/forms';
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 
 import { InMemoryDataService } from './services/in-memory-data.service';
@@ -14,6 +15,7 @@ import { TaskDetailComponent } from './task-detail/task-detail.component';
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     InMemoryWebApiModule.forRoot(InMemoryDataService),
     AppRoutingModule
   ],

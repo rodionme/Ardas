@@ -1,17 +1,15 @@
 <div *ngIf="task" class="task">
-  <div>id: {{task.id}}</div>
-  <div>name: {{task.name}}</div>
-  <div>creation_date: {{task.creation_date | date:'medium'}}</div>
-  <div>due_date: {{task.due_date | date:'medium'}}</div>
-  <div>start_date: {{task.start_date | date:'medium'}}</div>
-  <div>is_completed: {{task.is_completed}}</div>
-  <div>is_archived: {{task.is_archived}}</div>
-  <div>is_high_priority: {{task.is_high_priority}}</div>
-  <div>estimated_effort: {{task.estimated_effort}}</div>
-  <div>actual_effort: {{task.actual_effort}}</div>
-  <div>physical_progress: {{task.physical_progress}}</div>
-  <div>obj_status: {{task.obj_status}}</div>
-  <div>description: {{task.description}}</div>
-  <div>project_id: {{task.project_id}}</div>
-  <div>tags: {{task.tags}}</div>
+  <div *ngIf="task.tags" class="row tags"><div *ngFor="let tag of task.tags" class="tag">{{tag}}</div></div>
+  <input #titleInput [(ngModel)]="task.name" (keyup.enter)="save()" (keyup.esc)="revert()" (blur)="revert()" class="title" type="text" placeholder="Input title" />
+
+  <div *ngIf="task.physical_progress" class="meter"><span [style.width.%]="task.physical_progress"></span></div>
+
+  <span *ngIf="task.creation_date " class="row">creation_date: {{task.creation_date | date:'medium'}}</span>
+  <span *ngIf="task.due_date " class="row">due_date: {{task.due_date | date:'medium'}}</span>
+  <span *ngIf="task.start_date " class="row">start_date: {{task.start_date | date:'medium'}}</span>
+
+  <span *ngIf="task.description" class="row description">description: {{task.description}}</span>
+  <span *ngIf="task.project_id" class="row">project_id: {{task.project_id}}</span>
 </div>
+
+<button *ngIf="task" (click)="goBack()" class="button" type="button">Back to table</button>
