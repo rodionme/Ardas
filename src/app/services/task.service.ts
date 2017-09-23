@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
+import { Http, Headers } from '@angular/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -11,6 +11,7 @@ import { Task } from '../models/task';
 @Injectable()
 export class TaskService {
   private tasksUrl = 'api/tasks';
+  private headers = new Headers({'Content-Type': 'application/json'});
 
   constructor(private http: Http) {}
 
@@ -27,6 +28,14 @@ export class TaskService {
     return this.http
       .get(url)
       .map(response => response.json().data as Task)
+      .catch(this._handleError);
+  }
+
+  update(task: Task): Observable<Task> {
+    const url = `${this.tasksUrl}/${task.id}`;
+
+    return this.http
+      .put(url, JSON.stringify(task), {headers: this.headers})
       .catch(this._handleError);
   }
 
