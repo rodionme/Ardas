@@ -1,3 +1,5 @@
-<p>
-  tasks works!
-</p>
+<ol><li *ngFor="let task of tasks" [routerLink]="['/task', task.id]" class="row" [class.prioritized]="task.is_high_priority">
+  {{task.name}} | {{task.tags}} | {{task.actual_effort}} | {{task.estimated_effort}} | {{task.due_date | date:'medium'}}
+</li></ol>
+
+<div *ngIf="activeTasks && totalTasks" class="summary">Show {{activeTasks}} active tasks from {{totalTasks}} total</div>
